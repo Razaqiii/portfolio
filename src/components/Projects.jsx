@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import GlassCard from "./GlassCard";
-import testImg from "../assets/test.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Projects({ darkMode = false }) {
@@ -17,37 +16,60 @@ export default function Projects({ darkMode = false }) {
     };
   }, [activeProject]);
 
-  const projects = [
-    {
-      title: "Mood Bridge",
-      time: "2025",
-      description:"A website based on Next.js, Golang, and machine learning to detect the mental state of the user.",
-      completedesc: "Mood Bridge is a social web app built with the T3 stack and Golang, designed like Twitter but enhanced with AI-powered mental health detection. Posts are analyzed using an ensemble of CatBoost, XGBoost, and LightGBM to classify states such as normal, stressed, depressed, or suicidal. Beyond detection, users can connect with others allowing those struggling to be supported by healthier peers and access a built-in chatbot for conversational help.",
-      image: "./src/assets/project1/3.png",
-      tags: ["Next.js", "Golang", "Machine Learning"],
-      showcase: ["./src/assets/project1/1.png", "./src/assets/project1/2.png", "./src/assets/project1/3.png", "./src/assets/project1/4.png", "./src/assets/project1/5.png"],
-    },
-    {
-      title: "Research Paper (Unpublished)",
-      time: "2025",
-      description:
-        "Rehearsal-Based Fine-Tuning Approach to Mitigate Catastrophic Forgetting in Accent Classification with ECAPA-TDNN",
-      completedesc: "This research investigates catastrophic forgetting in accent classification using the ECAPA-TDNN model. While standard fine-tuning caused the model to lose accuracy on previously learned accents, we proposed a rehearsal-based fine-tuning approach that reintroduces samples from older accents during training. Tested on the AfriSpeech-200 dataset, the method improved overall accuracy from 72.43% to 76.92%, showing that simple rehearsal strategies can preserve past knowledge while enhancing generalization to new accents.",
-      image: "./src/assets/project2/1.jpg",
-      tags: ["Research", "Speech Recognition", "Fine Tuning"],
-      showcase: ["./src/assets/project2/1.jpg", "./src/assets/project2/2.jpg", "./src/assets/project2/3.jpg", "./src/assets/project2/4.jpg", "./src/assets/project2/5.jpg"],
-    },
-    {
-      title: "Hotel Website UI/UX Design",
-      time: "2024",
-      description:
-        "A conversational assistant powered by transformers, deployed as a web app.",
-      completedesc: "A hotel website UI/UX design created in Figma, focusing on a clean layout, intuitive navigation, and modern visuals to enhance user booking experience. The design emphasizes accessibility, responsive structure, and a professional aesthetic suitable for hospitality brands.",
-      image: "./src/assets/project3/1.png",
-      tags: ["Figma", "Design", "UI/UX"],
-      showcase: ["./src/assets/project3/1.png", "./src/assets/project3/2.png", "./src/assets/project3/3.png", "./src/assets/project3/4.png", "./src/assets/project3/5.png", "./src/assets/project3/6.png", "./src/assets/project3/7.png", "./src/assets/project3/8.png"],
-    },
-  ];
+const projects = [
+  {
+    title: "Mood Bridge",
+    time: "2025",
+    description:"A website based on Next.js, Golang, and machine learning to detect the mental state of the user.",
+    completedesc: "Mood Bridge is a social web app built with the T3 stack and Golang, designed like Twitter but enhanced with AI-powered mental health detection. Posts are analyzed using an ensemble of CatBoost, XGBoost, and LightGBM to classify states such as normal, stressed, depressed, or suicidal. Beyond detection, users can connect with others allowing those struggling to be supported by healthier peers and access a built-in chatbot for conversational help.",
+    image: "/project1/3.png",
+    tags: ["Next.js", "Golang", "Machine Learning"],
+    showcase: [
+      "/project1/1.png",
+      "/project1/2.png",
+      "/project1/3.png",
+      "/project1/4.png",
+      "/project1/5.png",
+    ],
+  },
+  {
+    title: "Research Paper (Unpublished)",
+    time: "2025",
+    description:
+      "Rehearsal-Based Fine-Tuning Approach to Mitigate Catastrophic Forgetting in Accent Classification with ECAPA-TDNN",
+    completedesc: "This research investigates catastrophic forgetting in accent classification using the ECAPA-TDNN model. While standard fine-tuning caused the model to lose accuracy on previously learned accents, we proposed a rehearsal-based fine-tuning approach that reintroduces samples from older accents during training. Tested on the AfriSpeech-200 dataset, the method improved overall accuracy from 72.43% to 76.92%, showing that simple rehearsal strategies can preserve past knowledge while enhancing generalization to new accents.",
+    image: "/project2/1.jpg",
+    tags: ["Research", "Speech Recognition", "Fine Tuning"],
+    showcase: [
+      "/project2/1.jpg",
+      "/project2/2.jpg",
+      "/project2/3.jpg",
+      "/project2/4.jpg",
+      "/project2/5.jpg",
+    ],
+  },
+  {
+    title: "Hotel Website UI/UX Design",
+    time: "2024",
+    description:
+      "A conversational assistant powered by transformers, deployed as a web app.",
+    completedesc: "A hotel website UI/UX design created in Figma, focusing on a clean layout, intuitive navigation, and modern visuals to enhance user booking experience. The design emphasizes accessibility, responsive structure, and a professional aesthetic suitable for hospitality brands.",
+    image: "/project3/1.png",
+    tags: ["Figma", "Design", "UI/UX"],
+    showcase: [
+      "/project3/1.png",
+      "/project3/2.png",
+      "/project3/3.png",
+      "/project3/4.png",
+      "/project3/5.png",
+      "/project3/6.png",
+      "/project3/7.png",
+      "/project3/8.png",
+    ],
+  },
+];
+
+
 
   return (
     <div style={{ fontFamily: "Fredoka, sans-serif" }} className="group/list">
