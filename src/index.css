@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Modak&family=Fredoka:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+.bg-custom-gradient {
+  position: relative;
+  background: linear-gradient(to right, #09477E 0%, #0D5EA6 20%, #0D5EA6 80%, #09477E 100%);
+  transition: background 0.3s ease;
+  z-index: 0;
+}
+
+.bg-custom-gradient::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #001629 0%, #001629 20%, #001629 80%, #001629 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dark .bg-custom-gradient::after {
+  opacity: 1;
+}
+
+::selection {
+  background: #EAA64D;
+  color: #09477E;
+}
+
+.dark ::selection {
+  background: #202f38;
+  color: #22ddd2;
+}
+
+.sidebar-link::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 32px;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: #EAA64D;
+  border-radius: 2px;
+  transition: width 0.2s cubic-bezier(.4,2,.6,1);
+}
+
+.sidebar-link.active::after {
+  width: 75%;
+}
+
+.showcase-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.showcase-scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(234, 166, 77, 0.6);
+  border-radius: 9999px;
+}
+
+.dark .showcase-scroll::-webkit-scrollbar-thumb {
+  background-color: #22ddd2;
+  border-radius: 9999px;
+}
