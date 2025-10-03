@@ -7,5 +7,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/portfolio/', // 👈 this fixes the blank white issue on GitHub Pages
+  base: '/', // 👈 or just remove this line entirely
 })
