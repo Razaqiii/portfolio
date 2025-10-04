@@ -5,19 +5,15 @@ import LoadingScreen from "./components/LoadingScreen";
 
 export default function App() {
   const [activeProject, setActiveProject] = useState(null);
-
   
-  const [darkMode, setDarkMode] = useState(() => {
-    const savedMode = localStorage.getItem("darkMode");
-    return savedMode ? JSON.parse(savedMode) : false;
-  });
+  // ALWAYS start in light mode
+  const [darkMode, setDarkMode] = useState(false);
 
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
 
-
+  // Effect to APPLY dark mode changes (but not save them)
   useEffect(() => {
-    localStorage.setItem("darkMode", JSON.stringify(darkMode));
     if (darkMode) {
       document.documentElement.classList.add("dark");
     } else {
@@ -25,56 +21,32 @@ export default function App() {
     }
   }, [darkMode]);
 
-useEffect(() => {
-  const timer = setInterval(() => {
-    setProgress((p) => {
-      if (p >= 100) {
-        clearInterval(timer);
-        return 100;
-      }
+  // Effect to simulate loading progress
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((p) => {
+        if (p >= 100) {
+          clearInterval(timer);
+          return 100;
+        }
+        const increment = Math.random() > 0.4 
+          ? Math.floor(Math.random() * 12) + 3  
+          : 0; 
+        return Math.min(100, p + increment);
+      });
+    }, 120); 
+    return () => clearInterval(timer);
+  }, []);
 
-      const increment = Math.random() > 0.4 
-        ? Math.floor(Math.random() * 12) + 3  
-        : 0; 
-
-      return Math.min(100, p + increment);
-    });
-  }, 120); 
-  return () => clearInterval(timer);
-}, []);
-
-
-
-
+  // Effect to lock scroll during loading
   useEffect(() => {
     if (isLoading) {
       document.body.classList.add('overflow-hidden');
-      document.documentElement.classList.add('overflow-hidden');
-
-      const preventScroll = (e) => e.preventDefault();
-      const preventKeyScroll = (e) => {
-        if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(e.key)) {
-          e.preventDefault();
-        }
-      };
-
-      window.addEventListener('wheel', preventScroll, { passive: false });
-      window.addEventListener('touchmove', preventScroll, { passive: false });
-      window.addEventListener('keydown', preventKeyScroll);
-
-      return () => {
-        window.removeEventListener('wheel', preventScroll);
-        window.removeEventListener('touchmove', preventScroll);
-        window.removeEventListener('keydown', preventKeyScroll);
-      };
     } else {
       document.body.classList.remove('overflow-hidden');
-      document.documentElement.classList.remove('overflow-hidden');
     }
-
     return () => {
       document.body.classList.remove('overflow-hidden');
-      document.documentElement.classList.remove('overflow-hidden');
     };
   }, [isLoading]);
 

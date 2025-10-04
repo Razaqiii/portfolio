@@ -7,7 +7,7 @@ export default function AnimatedTextRoad({ direction = "up", width = 32, speed =
 
   const skills = [
     "Front-end", "Python", "Hugging Face", "Machine Learning", "Debugging",
-    "Hello World!", "React", "Tailwind CSS", "JavaScript", "REST APIs", "SQL", "Git"
+    "HHello World!", "React", "Tailwind CSS", "JavaScript", "REST APIs", "SQL", "Git"
   ];
 
   const singleLine = skills.join("  ●  ") + "  ●  ";
